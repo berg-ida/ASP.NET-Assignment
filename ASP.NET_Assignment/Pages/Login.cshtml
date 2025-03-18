@@ -1,0 +1,39 @@
+﻿@page "/"
+@model ASP.NET_Assignment.Pages.LoginModel
+@{
+
+}
+
+<div class="login-wrapper">
+    <div class="container">
+        <h1>Login</h1>
+
+        <form id="loginForm" class="login-form">
+
+            <div class="input-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-input" placeholder="Your email adress">
+            </div>
+
+            <div class="input-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-input" placeholder="Enter your password">
+            </div>
+
+            <div class="remember-button">
+                <span>Remember Me</span>
+                <label for="remember-button">
+                    <input type="checkbox">
+                </label>
+            </div>
+
+            <button id="submit-button" type="submit" class="button">Log In</button>
+
+        </form>
+        <p>
+            Don't have an account?
+            <a asp-page="/Register" id="register-link">Sign up</a>
+        </p>
+
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@page
+@model ASP.NET_Assignment.Pages.RegisterModel
+@{
+}
+
+<div class="register-wrapper">
+    <div class="container">
+        <h1>Create Account</h1>
+
+        <form id="registerForm" class="register-form">
+
+            <div class="input-group">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" id="fullName" class="form-input" placeholder="Your full name">
+            </div>
+
+            <div class="input-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" id="email" class="form-input" placeholder="Your email adress">
+            </div>
+
+            <div class="input-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="text" id="password" class="form-input" placeholder="Enter your password">
+            </div>
+
+            <div class="input-group">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="text" id="confirmPassword" class="form-input" placeholder="Confirm your password">
+            </div>
+
+            <div class="accept-button">
+                <span>I accept the Terms and Conditions.</span>
+                <label for="accept-button">
+                    <input type="checkbox">
+                </label>
+            </div>
+
+            <button id="submit-button" type="submit" class="button">Create Account</button>
+
+        </form>
+        <p>
+            Already have an account?
+            <a asp-page="/Login" id="login-link">Login</a>
+        </p>
+
+    </div>
+</div>

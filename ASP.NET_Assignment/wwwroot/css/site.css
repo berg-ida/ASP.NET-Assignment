@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+    --color-heading: #1A1926;
+    --color-body-light: #637085;
+    --color-body-dark: #28263B;
+    --color-grey100: #F5F7FA;
+    --color-grey200: #F0F1F5;
+    --color-grey300: #E8EAED;
+    --color-grey400: #E3E5E8;
+    --color-border100: #EBEEF2;
+    --color-border200: #E3E5E8;
+    --color-border300: #C6C8CC;
+    --color-background: #F1F3F7;
+    --color-surface: #FFFFFF;
+    --color-accent: #2D99FF;
+    --color-orange: #FF9640;
+    --color-red: #FF6640;
+    --color-yellow: #FFD422;
+    --color-blue: #2CD9D9;
+    --color-green: #31D482;
+    --color-purple: #826AF9;
+    --color-dark-green: #24B26B;
+    --color-dark-orange: #F09330;
+    --color-dark-yellow: #FCBB42;
+    --color-dark-red: #E94D3F;
+    --color-dark-blue: #2D7DCC;
+    --color-dark-purple: #634CD4;
+    --color-accent-dark: #2682D9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/*-----PORTAL-----*/
+
+.portal-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: 100vh;
+    .container-side
+
+{
+    border: solid 1px var(--color-border200);
+    img
+
+{
+    margin-top: 1.2rem;
+    margin-left: 1.2rem;
+    padding-right: 7rem;
+}
+
+.folder {
+    display: flex;
+    background-color: #DBE9F8;
+    border-radius: 15px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 1.2rem;
+    .fa-solid
+
+{
+    color: var(--color-accent);
+    align-self: center;
+    margin-left: 1.2rem;
+    margin-right: .8rem;
+}
+
+p {
+    color: var(--color-accent);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+}
+}
+
+.container-main {
+    .top
+
+{
+    border: solid 1px var(--color-border200);
+    display: flex;
+    flex-direction: row-reverse;
+    img
+
+{
+    background-color: orange;
+    border-radius: 50%;
+    margin-top: 1.2rem;
+    margin-right: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+.fa-solid {
+    color: grey;
+    align-self: center;
+    margin-right: 2rem;
+}
+
+}
+
+.overview {
+    border: solid 1px var(--color-border200);
+    .overview-top
+
+{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    h1
+
+{
+    margin-left: 2rem;
+    margin-top: 2rem;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+#add-project-button {
+    height: 47%;
+    padding: .9rem;
+    padding-right: 2.2rem;
+    padding-left: 2.2rem;
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-surface);
+    margin-right: 2rem;
+    align-self: center;
+}
+
+    #add-project-button:hover {
+        cursor: pointer;
+        background-color: var(--color-accent-dark);
+    }
+
+}
+
+.overview-bottom {
+    display: flex;
+    flex-direction: row;
+    p
+
+{
+    margin-left: 2rem;
+    margin-bottom: .5rem;
+    color: grey;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+}
+}
+
+.projects {
+    border: solid 1px var(--color-border200);
+    height: 77%;
+}
+
+}
+}
+
+
+
+
+/*-----REGISTER-----*/
+
+.register-wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    .container
+
+{
+    background-color: var(--color-surface);
+    border-radius: 10px;
+    padding-left: 9.5rem;
+    padding-right: 9.5rem;
+    place-self: center;
+    margin-top: 3.5rem;
+    h1
+
+{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    padding-top: 4rem;
+    padding-bottom: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    label
+
+{
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: .5rem;
+}
+
+.form-input {
+    border: solid 1px var(--color-border100);
+    border-radius: 8px;
+    padding: .8rem;
+    margin-bottom: 1.3rem;
+}
+
+}
+
+.accept-button {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 6.2rem;
+    font-weight: 400;
+    margin-top: .5rem;
+    margin-bottom: 1.8rem;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--color-accent);
+    background-color: var(--color-surface);
+}
+
+.button {
+    padding: .9rem;
+    padding-right: 8.5rem;
+    padding-left: 8.5rem;
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-white);
+    margin-bottom: 5.5rem;
+}
+
+    .button:hover {
+        cursor: pointer;
+        background-color: var(--color-accent-dark);
+    }
+
+p {
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 2.2rem;
+}
+
+}
+
+#login-link {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+}
+
+
+
+
+
+/*-----LOGIN-----*/
+
+.login-wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    .container
+
+{
+    background-color: var(--color-surface);
+    border-radius: 10px;
+    padding-left: 9.5rem;
+    padding-right: 9.5rem;
+    place-self: center;
+    margin-top: 9rem;
+    h1
+
+{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    padding-top: 4rem;
+    padding-bottom: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    label
+
+{
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: .5rem;
+}
+
+.form-input {
+    border: solid 1px var(--color-border100);
+    border-radius: 8px;
+    padding: .8rem;
+    margin-bottom: 1.3rem;
+}
+
+}
+
+.remember-button {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 15.5rem;
+    font-weight: 400;
+    margin-top: .5rem;
+    margin-bottom: 1.8rem;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--color-accent);
+    background-color: var(--color-surface);
+}
+
+.button {
+    padding: .9rem;
+    padding-right: 10.2rem;
+    padding-left: 10.2rem;
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-white);
+    margin-bottom: 5.5rem;
+}
+
+    .button:hover {
+        cursor: pointer;
+        background-color: var(--color-accent-dark);
+    }
+
+p {
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 2.2rem;
+}
+
+}
+
+#register-link {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+}
