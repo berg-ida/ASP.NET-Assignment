@@ -8,26 +8,30 @@
     <div class="container">
         <h1>Login</h1>
 
-        <form id="loginForm" class="login-form">
+        <form method="post" id="loginForm" class="login-form">
 
             <div class="input-group">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" class="form-input" placeholder="Your email adress">
+                <label asp-for="Form.Email" class="form-label">Email</label>
+                <input asp-for="Form.Email" id="email" class="form-input" placeholder="Your email adress">
+                <span asp-validation-for="Form.Email"></span>
             </div>
 
             <div class="input-group">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" class="form-input" placeholder="Enter your password">
+                <label asp-for="Form.Password" class="form-label">Password</label>
+                <input asp-for="Form.Password" id="password" class="form-input" placeholder="Enter your password">
+                <span asp-validation-for="Form.Email"></span>
             </div>
 
             <div class="remember-button">
                 <span>Remember Me</span>
-                <label for="remember-button">
-                    <input type="checkbox">
+                <label asp-for="Form.RememberMe">
+                    <input asp-for="Form.RememberMe" type="checkbox">
                 </label>
             </div>
 
-            <button id="submit-button" type="submit" class="button">Log In</button>
+            <button id="submit-button" type="submit" class="button">
+                <a asp-page="/Portal" id="login-link">Log In</a>
+            </button>
 
         </form>
         <p>

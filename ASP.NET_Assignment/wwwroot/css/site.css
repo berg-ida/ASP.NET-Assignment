@@ -27,6 +27,7 @@
     --color-dark-blue: #2D7DCC;
     --color-dark-purple: #634CD4;
     --color-accent-dark: #2682D9;
+    --color-modal-background: rgba(0,0,0, 0.2);
 }
 
 * {
@@ -42,6 +43,11 @@ body {
     background-color: var(--color-background);
     margin: 0;
     padding: 0;
+}
+
+form .field-validation-error {
+    color: var(--color-dark-red);
+    font-size: 13px;
 }
 
 
@@ -99,7 +105,8 @@ p {
     img
 
 {
-    background-color: orange;
+    background: rgb(255,208,128);
+    background: radial-gradient(circle, rgba(255,208,128,1) 36%, rgba(255,187,128,1) 100%);
     border-radius: 50%;
     margin-top: 1.2rem;
     margin-right: 2rem;
@@ -174,6 +181,234 @@ p {
 }
 }
 
+#log-out-button {
+    border: none;
+    padding: 0;
+    width: 2.5%;
+    margin-right: 1rem;
+}
+
+#log-out-button:hover {
+    cursor: pointer;
+    
+    i {
+          color: var(--color-heading);
+      }
+}
+
+
+/*-----ADD PROJECT MODAL-----*/
+
+.addProjectModal {
+display: none;
+background-color: var(--color-modal-background);
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+justify-content: center;
+align-items: center;
+
+label {
+          font-size: 15px;
+          font-weight: 600;
+      }
+
+input[type="text"] {
+    font-size: 15px;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+}
+
+#description {
+    padding-bottom: 5rem;
+}
+
+}
+
+#projectImage {
+    display: flex;
+    justify-self: center;
+}
+
+    .addProjectModal .modal-content {
+        background-color: var(--color-surface);
+        border-radius: 16px;
+        box-shadow: 0 4px 4px 3px rgba(180,180,180, 0.7);
+        padding: 2rem;
+    }
+
+        .addProjectModal .modal-content .modal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+
+            h2 {
+                   margin: 0;
+                   font-size: 28px;
+               }
+           
+        }
+
+.close-button {
+    cursor: pointer;
+    font-size: 2em;
+    border: none;
+    background-color: transparent;
+    color: var(--color-heading);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#addProjectModal .modal-content {
+    width: 550px;
+}
+
+.create-button {
+    height: 47%;
+    padding: .9rem;
+    padding-right: 2.2rem;
+    padding-left: 2.2rem;
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-surface);
+    margin-right: 2rem;
+    align-self: center;
+    width: 100%;
+}
+
+.create-button:hover {
+    cursor: pointer;
+    background-color: var(--color-accent-dark);
+}
+
+.addProject {
+    width: 100%;
+}
+
+.addProject .form-group {
+    position: relative;
+    display: grid;
+    gap: 0.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.addProject .field-group {
+    position: relative;
+}
+
+.addProject input,
+.addProject select,
+.addProject textarea {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-border200);
+}
+
+.addProject input:focus,
+.addProject select:focus,
+.addProject textarea:focus {
+    border: 1px solid var(--color-accent);
+}
+
+.dates {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    box-sizing:unset;
+
+
+    input [type="date"]
+{
+    font-size: 15px;
+    justify-self: stretch;
+}
+}
+
+#status {
+    font-size: 15px;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+}
+
+/*-----SIGN OUT MODAL-----*/
+
+.signOutModal {
+    display: none;
+    position: fixed;
+    right: 7rem;
+    top: 4rem;
+
+}
+
+.signOutModal .modal-content {
+    background-color: var(--color-surface);
+    border-radius: 16px;
+    box-shadow: 0 4px 4px 3px rgba(180,180,180, 0.3);
+    padding: .7rem;
+}
+
+.signOut-button {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    gap: 1rem;
+    border-radius: 10px;
+
+    i {
+          align-self: center;
+          margin-left: 1rem;
+      }
+    p {
+        font-family: "Nunito", sans-serif;
+        font-size: 16px;
+        padding-right: 10rem;
+    }
+}
+
+.signOut-button:hover {
+    cursor: pointer;
+    background-color: var(--color-accent);
+
+    p {
+          color: var(--color-surface);
+      }
+    i {
+        color: var(--color-surface);
+    }
+}
+
+.signOutModal .modal-header {
+   background-color: var(--color-grey100);
+   display: flex;
+   gap: 1.2rem;
+   border-radius: 10px;
+   padding-right: 7rem;
+   align-items: center;
+
+
+   img
+    {
+        background: rgb(255,208,128);
+        background: radial-gradient(circle, rgba(255,208,128,1) 36%, rgba(255,187,128,1) 100%);
+        border-radius: 50%;
+        height: 42px;
+        margin-left: 1rem;
+        border: 2px solid var(--color-surface);
+    }
+    p {
+        font-weight: 600;
+    }
+}
+
+
+
 
 
 
@@ -217,7 +452,10 @@ p {
     border: solid 1px var(--color-border100);
     border-radius: 8px;
     padding: .8rem;
-    margin-bottom: 1.3rem;
+}
+
+.form-label {
+    margin-top: 1.3rem;
 }
 
 }
@@ -227,7 +465,7 @@ p {
     flex-direction: row-reverse;
     margin-right: 6.2rem;
     font-weight: 400;
-    margin-top: .5rem;
+    margin-top: 1.3rem;
     margin-bottom: 1.8rem;
 }
 
@@ -258,6 +496,10 @@ p {
     margin-bottom: 2.2rem;
 }
 
+}
+
+#submit-button {
+    color: var(--color-surface);
 }
 
 #login-link {
@@ -356,6 +598,11 @@ p {
 
 #register-link {
     color: var(--color-accent);
+    text-decoration: none;
+}
+
+#login-link {
+    color: var(--color-surface);
     text-decoration: none;
 }
 }

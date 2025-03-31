@@ -1,0 +1,26 @@
+﻿@page
+@model ASP.NET_Assignment.Pages.Shared.Partials.Sections._SignOutModel
+@{
+}
+
+<div id="signOutModal" class="signOutModal">
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            @* fixa så det visar rätt username *@
+            <img src="/images/avatar.svg" alt="Avatar">
+            <p>UserName</p>
+
+        </div>
+
+        <form method="post" asp-page="/Shared/Partials/Sections/_SignOut">
+            <button type="submit" class="signOut-button">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <p>Logout</p>
+            </button>
+        </form>
+
+    </div>
+
+</div>
