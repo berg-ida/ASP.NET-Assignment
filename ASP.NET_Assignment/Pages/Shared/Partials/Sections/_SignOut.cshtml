@@ -1,6 +1,11 @@
 ﻿@page
+@using Data.Entities
+@using Microsoft.AspNetCore.Identity
 @model ASP.NET_Assignment.Pages.Shared.Partials.Sections._SignOutModel
+@inject UserManager<UserEntity> UserManager;
 @{
+    var user = await UserManager.GetUserAsync(User);
+    var fullName = user?.FullName;
 }
 
 <div id="signOutModal" class="signOutModal">
@@ -8,9 +13,8 @@
 
         <div class="modal-header">
 
-            @* fixa så det visar rätt username *@
             <img src="/images/avatar.svg" alt="Avatar">
-            <p>UserName</p>
+            <p>@fullName</p>  
 
         </div>
 

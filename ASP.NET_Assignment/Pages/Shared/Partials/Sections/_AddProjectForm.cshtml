@@ -1,5 +1,4 @@
-﻿@* @page *@
-@model Business.Models.AddProjectForm
+﻿@model Business.Models.AddProjectFormData
 @{
 
 }
@@ -17,48 +16,48 @@
 
         <img id="projectImage" src="images/project.svg" alt="Project Image" />
 
-        <form class="addProject" novalidate method="post" asp-action="AddProject">
+        <form class="addProject" novalidate method="post" asp-page="/Portal" asp-page-handler="AddProject">
             <div class="form-group">
-                <label asp-for="ProjectName">Project Name</label>
                 <div class="field-group">
-                    <input asp-for="ProjectName" type="text" placeholder="Project Name"/>
-                    <span asp-validation-for ="ProjectName" class="field-validation-error"></span>
+                    <label asp-for="ProjectName">Project Name</label>
+                    <input asp-for="ProjectName" type="text" class="form-input" placeholder="Project Name"/>
+                    <span asp-validation-for ="ProjectName"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label asp-for="ClientName">Client Name</label>
                 <div class="field-group">
-                    <input asp-for="ClientName" type="text" placeholder="Client Name" />
-                    <span asp-validation-for="ClientName" class="field-validation-error"></span>
+                    <label asp-for="ClientName">Client Name</label>
+                    <input asp-for="ClientName" type="text" class="form-input" placeholder="Client Name" />
+                    <span asp-validation-for="ClientName"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label asp-for="Description">Description</label>
                 <div class="field-group">
-                    <input asp-for="Description" id="description" type="text" placeholder="Give your project a description" />
-                    <span asp-validation-for="Description" class="field-validation-error"></span>
+                    <label asp-for="Description">Description</label>
+                    <input asp-for="Description" id="description" type="text" class="form-input" placeholder="Give your project a description" />
+                    <span asp-validation-for="Description"></span>
                 </div>
             </div>
 
             <div class="dates">
                 <div class="form-group">
-                    <label asp-for="StartDate">Start Date</label>
                     <div class="field-group">
-                        <input asp-for="StartDate" type="date" value="2025-01-01" />
+                        <label asp-for="StartDate">Start Date</label>
+                        <input asp-for="StartDate" type="date" class="form-input" value="2025-01-01" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="EndDate">End Date</label>
                     <div class="field-group">
-                        <input asp-for="EndDate" type="date" value="2025-01-01" />
+                        <label asp-for="EndDate">End Date</label>
+                        <input asp-for="EndDate" type="date" class="form-input" value="2025-01-01" />
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label asp-for="Status">Status</label>
                 <div id="status" class="field-group">
+                    <label asp-for="Status">Status</label>
                     <select asp-for="Status" name="Status">
                         <option value="Not yet started">Not yet started</option>
                         <option value="Started">Started</option>
@@ -68,9 +67,10 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Budget">Budget</label>
                 <div class="field-group">
-                    <input asp-for="Budget" type="text" placeholder="0" />
+                    <label asp-for="Budget">Budget</label>
+                    <input asp-for="Budget" type="text" class="form-input" placeholder="0" />
+                    <span asp-validation-for="Budget"></span>
                 </div>
             </div>
 
@@ -80,3 +80,4 @@
 
     </div>
 </div>
+

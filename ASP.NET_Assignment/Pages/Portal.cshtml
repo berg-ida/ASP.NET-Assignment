@@ -2,11 +2,11 @@
 @model ASP.NET_Assignment.Pages.PortalModel
 @{
 
-    // var addProjectFormModel = new ASP.NET_Assignment.Pages.Shared.Partials.Sections._AddProjectFormModel();
 }
 
-<partial name="Partials/Sections/_AddProjectForm" model="Model.AddProjectForm" />
+<partial name="Partials/Sections/_AddProjectForm" model="Model.AddProjectFormData" />
 <partial name="Partials/Sections/_SignOut" model="Model.SignOutModel" />
+<partial name="Partials/Sections/_EditAndDelete" model="Model.EditAndDeleteModel" />
 
 <div class="portal-wrapper">
     <div class="container-side">
@@ -23,7 +23,7 @@
             <button id="log-out-button" type="button" data-modal="true" data-target="#signOutModal" data-close="true">
                 <i class="fa-solid fa-gear"></i>
             </button>
-            
+
         </div>
 
         <div class="overview">
@@ -33,16 +33,36 @@
                 <button id="add-project-button" type="button" data-modal="true" data-target="#addProjectModal">+ Add Project</button>
             </div>
             <div class="overview-bottom">
-                <p>ALL[0]</p>
-                <p>STARTED[0]</p>
-                <p>COMPLETED[0]</p>
+                <button class="status-button">ALL[@Model.AllCount]</button>
+                <button class="status-button">NOT YET STARTED[@Model.NotStartedCount]</button>
+                <button class="status-button">STARTED[@Model.StartedCount]</button>
+                <button class="status-button">COMPLETED[@Model.CompletedCount]</button>
             </div>
         </div>
 
         <div class="projects">
-            <p>projects here</p>
+            @foreach (var project in Model.Projects)
+            {
+                <div class="project">
+                    <div class="project-header">
+                        <img class="project-image" src="~/images/project.svg" alt="Project Image"/>
+                        <h3 class="heading">@project.ProjectName</h3>
+                        <p class="text">@project.Client.ClientName</p>
+                        <button id="edit-button" type="button" data-modal="true" data-target="#editAndDeleteModal" data-close="true" class="edit-button">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </div>
+                    <div class="project-content">
+                        <p>@project.Description</p>
+                    </div>
+                </div>
+            }
+
         </div>
 
     </div>
 
 </div>
+
+@await Html.PartialAsync("_ValidationScripts")
+@await Html.PartialAsync("_ModalScripts")

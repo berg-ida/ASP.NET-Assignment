@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
 
-namespace Business.Models;
+namespace Data.Entities;
 
-public class AppUser : IdentityUser
+public class UserEntity : IdentityUser
 {
     [ProtectedPersonalData]
     public string FullName { get; set; } = null!;
 }
-

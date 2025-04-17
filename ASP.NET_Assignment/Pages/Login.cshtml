@@ -8,7 +8,7 @@
     <div class="container">
         <h1>Login</h1>
 
-        <form method="post" id="loginForm" class="login-form">
+        <form method="post" id="loginForm" class="login-form" novalidate>
 
             <div class="input-group">
                 <label asp-for="Form.Email" class="form-label">Email</label>
@@ -19,7 +19,7 @@
             <div class="input-group">
                 <label asp-for="Form.Password" class="form-label">Password</label>
                 <input asp-for="Form.Password" id="password" class="form-input" placeholder="Enter your password">
-                <span asp-validation-for="Form.Email"></span>
+                <span asp-validation-for="Form.Password"></span>
             </div>
 
             <div class="remember-button">
@@ -41,3 +41,5 @@
 
     </div>
 </div>
+
+@await Html.PartialAsync("_ValidationScripts")

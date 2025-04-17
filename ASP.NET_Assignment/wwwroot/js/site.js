@@ -1,36 +1,22 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
+    const addProjectForm = document.querySelector('.addProject');
+    if (addProjectForm) {
+        addProjectForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
 
-    const modalButtons = document.querySelectorAll('[data-modal="true"]')
-    modalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modalTarget = button.getAttribute('data-target')
-            const modal = document.querySelector(modalTarget)
+            const formData = new FormData(this)
+            const response = await fetch('', {
+                method: 'Post',
+                body: formData
+            });
 
-            if (modal) {
-                const toggleButton = button.hasAttribute('data-close');
-                if (toggleButton) {
-                    if (modal.style.display === 'flex') {
-                        modal.style.display = 'none';
-                    }
-                    else {
-                        modal.style.display = 'flex';
-                    }
-                }
-                else {
-                    modal.style.display = 'flex';
-                }
+            if (response.ok) {
+                window.location.reload();
+            }
+            else {
+                const result = await response.json();
+                console.error(result.errors);
             }
         })
-    })
-
-
-    const closeButtons = document.querySelectorAll('[data-close="true"]:not([data-modal="true"])')
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = button.closest('.modal')
-            if (modal) {
-                modal.style.display = 'none'
-            }
-        })
-    })
+    }
 })

@@ -5,15 +5,15 @@ namespace Business.Models;
 public class AddProjectForm
 {
     [DataType(DataType.Text)]
-    [Required(ErrorMessage = "Please enter a project name.")]
+    [Required(ErrorMessage = "Required")]
     public string ProjectName { get; set; } = null!;
 
     [DataType(DataType.Text)]
-    [Required(ErrorMessage = "Please enter a client name.")]
+    [Required(ErrorMessage = "Required")]
     public string ClientName { get; set; } = null!;
 
     [DataType(DataType.Text)]
-    [Required(ErrorMessage = "Please enter a description.")]
+    [Required(ErrorMessage = "Required")]
     public string Description { get; set; } = null!;
 
     [DataType(DataType.Date)]
@@ -33,7 +33,7 @@ public class AddProjectForm
 
 
     [DataType(DataType.Text)]
-    [Required(ErrorMessage = "Please enter a budget.")]
+    [Required(ErrorMessage = "Required")]
     public string Budget { get; set; } = null!;
 
 }

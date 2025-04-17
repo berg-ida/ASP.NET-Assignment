@@ -46,7 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
         field.addEventListener("input", function () {
             validateField(field)
         })
+        field.addEventListener("blur", function () {
+            validateField(field)
+        });
     })
 
-    
 })
+

@@ -1,37 +1,36 @@
 using Business.Models;
-using Data.Services;
+using Business.Services;
+using Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ASP.NET_Assignment.Pages
+namespace ASP.NET_Assignment.Pages;
+
+public class LoginModel(IUserService userService, SignInManager<UserEntity> signInManager) : PageModel
 {
-    public class LoginModel(UserService userService, SignInManager<AppUser> signInManager) : PageModel
+    private readonly IUserService _userService = userService;
+    private readonly SignInManager<UserEntity> _signInManager = signInManager;
+
+    [BindProperty]
+    public SignInFormData Form { get; set; }
+
+
+    public IActionResult OnGet()
     {
-        private readonly UserService _userService = userService;
-        private readonly SignInManager<AppUser> _signInManager = signInManager;
+        return Page();
+    }
 
-        [BindProperty]
-        public UserSignInForm Form { get; set; }
-
-        public IActionResult OnGet()
+    public async Task<IActionResult> OnPost()
+    {
+        if (ModelState.IsValid)
         {
-            return Page();
-        }
-
-        public async Task<IActionResult> OnPost()
-        {
-            if (ModelState.IsValid)
+            var result = await _signInManager.PasswordSignInAsync(Form.Email, Form.Password, Form.RememberMe, false);
+            if (result.Succeeded)
             {
-                var result = await _signInManager.PasswordSignInAsync(Form.Email, Form.Password, Form.RememberMe, false);
-                if (result.Succeeded)
-                {
-                    return RedirectToPage("/Portal");
-                }
+                return RedirectToPage("/Portal");
             }
-            return Page();
-
         }
-
+        return Page();
     }
 }
