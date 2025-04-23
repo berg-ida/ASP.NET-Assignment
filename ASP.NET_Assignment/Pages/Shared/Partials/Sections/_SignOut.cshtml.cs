@@ -2,7 +2,6 @@ using Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Threading.Tasks;
 
 namespace ASP.NET_Assignment.Pages.Shared.Partials.Sections;
 

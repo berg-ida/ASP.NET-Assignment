@@ -10,7 +10,7 @@ public class RegisterModel(IUserService userService) : PageModel
     private readonly IUserService _userService = userService;
 
     [BindProperty]
-    public SignUpFormData Form { get; set; }
+    public SignUpFormData Form { get; set; } = new SignUpFormData();
 
     public IActionResult OnGet()
     {

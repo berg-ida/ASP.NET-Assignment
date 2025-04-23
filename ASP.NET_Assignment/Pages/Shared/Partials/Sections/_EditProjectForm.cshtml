@@ -1,21 +1,18 @@
-﻿@model Business.Models.EditProjectForm
+﻿@model Business.Models.EditProjectFormData
 @{
 }
 
 <div id="editProjectModal" class="modal editProjectModal">
     <div class="modal-content">
-
         <div class="modal-header">
             <h2>Edit Project</h2>
-
             <button type="button" class="close-button" data-close="true">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
-
         <img id="projectImage" src="images/project.svg" alt="Project Image" />
-
-        <form class="editProject" novalidate method="post" asp-action="EditProject">
+        <form class="editProject" novalidate method="post" asp-page-handler="EditProject" id="editProjectForm" asp-page="/Portal">
+            <input type="hidden" asp-for="ProjectId" id="projectIdInput" />
             <div class="form-group">
                 <div class="field-group">
                     <label asp-for="ProjectName">Project Name</label>
@@ -37,7 +34,6 @@
                     <span asp-validation-for="Description"></span>
                 </div>
             </div>
-
             <div class="dates">
                 <div class="form-group">
                     <div class="field-group">
@@ -45,7 +41,6 @@
                         <input asp-for="StartDate" type="date" class="form-input" value="2025-01-01" />
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="field-group">
                         <label asp-for="EndDate">End Date</label>
@@ -53,7 +48,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <div id="status" class="field-group">
                     <label asp-for="Status">Status</label>
@@ -64,7 +58,6 @@
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="field-group">
                     <label asp-for="Budget">Budget</label>
@@ -72,10 +65,7 @@
                     <span asp-validation-for="Budget"></span>
                 </div>
             </div>
-
-            <button type="submit" class="create-button">Create</button>
-
+            <button type="submit" class="create-button">Edit</button>
         </form>
-
     </div>
 </div>

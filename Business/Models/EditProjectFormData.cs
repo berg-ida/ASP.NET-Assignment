@@ -2,8 +2,10 @@
 
 namespace Business.Models;
 
-public class AddProjectForm
+public class EditProjectFormData
 {
+    public string ProjectId { get; set; } = null!;
+
     [DataType(DataType.Text)]
     [Required(ErrorMessage = "Required")]
     public string ProjectName { get; set; } = null!;
@@ -17,23 +19,15 @@ public class AddProjectForm
     public string Description { get; set; } = null!;
 
     [DataType(DataType.Date)]
-    public string StartDate { get; set; } = null!;
+    public DateTime StartDate { get; set; }
 
     [DataType(DataType.Date)]
-    public string EndDate { get; set; } = null!;
+    public DateTime EndDate { get; set; }
 
     [DataType(DataType.Text)]
-    public string Status { get; set; } = null!;
-    public List<string> StatusOptions { get; } = new List<string>
-    {
-        "Not yet started",
-        "Started",
-        "Completed"
-    };
-
+    public string Status { get; set; } = "Not yet started";
 
     [DataType(DataType.Text)]
     [Required(ErrorMessage = "Required")]
-    public string Budget { get; set; } = null!;
-
+    public decimal Budget { get; set; }
 }

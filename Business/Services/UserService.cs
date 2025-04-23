@@ -34,7 +34,6 @@ public class UserService(IUserRepository userRepository, UserManager<UserEntity>
         }
     }
 
-    //Create
     public async Task<UserResult> CreateUserAsync(SignUpFormData formData)
     {
         if (formData == null)
@@ -67,16 +66,9 @@ public class UserService(IUserRepository userRepository, UserManager<UserEntity>
 
     }
 
-    //Read
     public async Task<UserResult> GetUsersAsync()
     {
         var result = await _userRepository.GetAllAsync();
         return result.MapTo<UserResult>();
     }
-
-    //Update
-
-    //Delete
-
-    
 }

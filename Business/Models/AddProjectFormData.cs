@@ -4,6 +4,8 @@ namespace Business.Models;
 
 public class AddProjectFormData
 {
+    public string ProjectId { get; set; } = null!;
+
     [DataType(DataType.Text)]
     [Required(ErrorMessage = "Required")]
     public string ProjectName { get; set; } = null!;

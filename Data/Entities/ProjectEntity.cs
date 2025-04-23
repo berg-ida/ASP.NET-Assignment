@@ -6,7 +6,8 @@ namespace Data.Entities;
 public class ProjectEntity
 {
     [Key]
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public string Id { get; set; } = null!;
 
     public string ProjectName { get; set; } = null!;
 

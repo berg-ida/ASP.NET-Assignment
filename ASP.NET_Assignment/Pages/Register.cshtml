@@ -6,48 +6,39 @@
 <div class="register-wrapper">
     <div class="container">
         <h1>Create Account</h1>
-
         <form method="post" id="registerForm" class="register-form" novalidate>
-
             <div class="input-group">
                 <label asp-for="Form.FullName" class="form-label">Full Name</label>
                 <input asp-for="Form.FullName" id="fullName" class="form-input" placeholder="Your full name">
                 <span asp-validation-for="Form.FullName"></span>
             </div>
-
             <div class="input-group">
                 <label asp-for="Form.Email" class="form-label">Email</label>
                 <input asp-for="Form.Email" id="email" class="form-input" placeholder="Your email adress">
                 <span asp-validation-for="Form.Email"></span>
             </div>
-
             <div class="input-group">
                 <label asp-for="Form.Password" class="form-label">Password</label>
                 <input asp-for="Form.Password" id="password" class="form-input" placeholder="Enter your password">
                 <span asp-validation-for="Form.Password"></span>
             </div>
-
             <div class="input-group">
                 <label asp-for="Form.ConfirmPassword" class="form-label">Confirm Password</label>
                 <input asp-for="Form.ConfirmPassword" id="confirmPassword" class="form-input" placeholder="Confirm your password">
                 <span asp-validation-for="Form.ConfirmPassword"></span>
             </div>
-
             <div class="accept-button">
                 <span>I accept the Terms and Conditions.</span>
                 <label asp-for="Form.TermsAndConditions">
                     <input asp-for="Form.TermsAndConditions" type="checkbox" />
                 </label>
             </div>
-
             <button id="submit-button" type="submit" class="button">Create Account</button>
-
         </form> 
         <p>
             Already have an account?
             <a asp-page="/Login" id="login-link">Login</a>
         </p>
-
     </div>
 </div>
 

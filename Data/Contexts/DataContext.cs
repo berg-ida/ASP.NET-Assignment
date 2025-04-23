@@ -9,4 +9,5 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
     public virtual DbSet<ClientEntity> Clients { get; set; }
     public virtual DbSet<StatusEntity> Statuses { get; set; }
     public virtual DbSet<ProjectEntity> Projects { get; set; }
+
 }

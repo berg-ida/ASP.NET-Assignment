@@ -1,7 +1,6 @@
 ﻿@page
 @model ASP.NET_Assignment.Pages.PortalModel
 @{
-
 }
 
 <partial name="Partials/Sections/_AddProjectForm" model="Model.AddProjectFormData" />
@@ -17,38 +16,33 @@
         </div>
     </div>
     <div class="container-main">
-
         <div class="top">
             <img src="/images/avatar.svg" alt="Avatar">
             <button id="log-out-button" type="button" data-modal="true" data-target="#signOutModal" data-close="true">
                 <i class="fa-solid fa-gear"></i>
             </button>
-
         </div>
-
         <div class="overview">
-
             <div class="overview-top">
                 <h1>Projects</h1>
                 <button id="add-project-button" type="button" data-modal="true" data-target="#addProjectModal">+ Add Project</button>
             </div>
             <div class="overview-bottom">
-                <button class="status-button">ALL[@Model.AllCount]</button>
-                <button class="status-button">NOT YET STARTED[@Model.NotStartedCount]</button>
-                <button class="status-button">STARTED[@Model.StartedCount]</button>
-                <button class="status-button">COMPLETED[@Model.CompletedCount]</button>
+                <button class="status-button" data-filter="all">ALL[@Model.AllCount]</button>
+                <button class="status-button" data-filter="not yet started">NOT YET STARTED[@Model.NotStartedCount]</button>
+                <button class="status-button" data-filter="started">STARTED[@Model.StartedCount]</button>
+                <button class="status-button" data-filter="completed">COMPLETED[@Model.CompletedCount]</button>
             </div>
         </div>
-
         <div class="projects">
             @foreach (var project in Model.Projects)
             {
-                <div class="project">
+                <div class="project" data-project-id="@project.Id" data-status="@project.Status.StatusName.ToLower()">
                     <div class="project-header">
                         <img class="project-image" src="~/images/project.svg" alt="Project Image"/>
                         <h3 class="heading">@project.ProjectName</h3>
                         <p class="text">@project.Client.ClientName</p>
-                        <button id="edit-button" type="button" data-modal="true" data-target="#editAndDeleteModal" data-close="true" class="edit-button">
+                        <button id="edit-button" type="button" data-modal="true" data-target="#editAndDeleteModal" data-close="true" class="edit-button" data-project-id="@project.Id">
                             <i class="fa-solid fa-ellipsis"></i>
                         </button>
                     </div>
@@ -57,11 +51,8 @@
                     </div>
                 </div>
             }
-
         </div>
-
     </div>
-
 </div>
 
 @await Html.PartialAsync("_ValidationScripts")

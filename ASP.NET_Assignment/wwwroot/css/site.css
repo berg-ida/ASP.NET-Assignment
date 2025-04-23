@@ -211,10 +211,11 @@ p {
     font-family: "Nunito", sans-serif;
 }
 
-.status-button:hover {
+.status-button:hover  {
     color: var(--color-accent);
     cursor: pointer;
 }
+
 
 
 .overview-bottom {
@@ -898,7 +899,7 @@ input[type="checkbox"] {
     background-color: var(--color-accent);
     border: none;
     border-radius: 8px;
-    color: var(--color-white);
+    color: var(--color-surface);
     margin-bottom: 5.5rem;
 }
 

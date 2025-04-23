@@ -5,6 +5,8 @@ using Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq.Expressions;
+using Data.Entities;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace Data.Repositories;
 
@@ -26,6 +28,7 @@ public abstract class BaseRepository<TEntity, TModel> : IBaseRepository<TEntity,
         {
             return new RepositoryResult<bool> { Succeeded = false, StatusCode = 400, Error = "Entity cannot be null." };
         }
+
         try
         {
             _table.Add(entity);

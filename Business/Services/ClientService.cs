@@ -25,29 +25,31 @@ public class ClientService(IClientRepository clientRepository) : IClientService
     public async Task<ClientResult<Client>> GetClientByNameAsync(string clientName)
     {
         var result = await _clientRepository.GetAsync(x => x.ClientName == clientName);
-        return result.MapTo<ClientResult<Client>>();
+        return result!.MapTo<ClientResult<Client>>();
     }
 
     public async Task<ClientResult<Client>> CreateClientAsync(string clientName)
     {
-        var existingClient = await GetClientByNameAsync(clientName);
-        if (existingClient.Succeeded && existingClient.Result != null)
+        try
         {
-            return existingClient;
+            var existingClient = await _clientRepository.GetAsync(x => x.ClientName == clientName);
+            if (existingClient != null)
+            {
+                return new ClientResult<Client> { Succeeded = true, Result = existingClient.MapTo<Client>() };
+            }
+
+            var newClient = new ClientEntity
+            {
+                Id = Guid.NewGuid().ToString(),
+                ClientName = clientName
+            };
+
+            await _clientRepository.AddAsync(newClient);
+            return new ClientResult<Client> { Succeeded = true, Result = newClient.MapTo<Client>() };
         }
-
-        var client = new ClientEntity
+        catch (Exception ex)
         {
-            ClientName = clientName,
-            Id = Guid.NewGuid().ToString(),
-        };
-        var result = await _clientRepository.AddAsync(client);
-
-        if (!result.Succeeded)
-        {
-            return new ClientResult<Client> { Succeeded = false, Error = result.Error };
+            return new ClientResult<Client> { Succeeded = false, Error = ex.Message };
         }
-
-        return new ClientResult<Client> { Succeeded = true, Result = new Client { Id = client.Id, ClientName = client.ClientName } };
     }
 }

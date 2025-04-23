@@ -8,5 +8,5 @@ public class ProjectResult<T> : ServiceResult
 
 public class ProjectResult : ServiceResult
 {
-    
+
 }
