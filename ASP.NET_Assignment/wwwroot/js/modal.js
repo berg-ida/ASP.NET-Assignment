@@ -7,6 +7,21 @@
             const modal = document.querySelector(modalTarget)
 
             if (modal) {
+
+                //koden nedan är skapad med ai för att dropdown ska följa givet projekt
+                if (modalTarget === '#editAndDeleteModal') {
+
+                    const buttonRect = button.getBoundingClientRect();
+                    modal.style.top = `${buttonRect.bottom + window.scrollY}px`;
+                    modal.style.left = `${buttonRect.left + window.scrollX - 140}px`;
+
+                    const projectId = button.getAttribute('data-project-id');
+                    if (projectId) {
+                        document.getElementById('projectIdInput').value = projectId;
+                    }
+                }
+                //
+
                 const toggleButton = button.hasAttribute('data-close');
                 if (toggleButton) {
                     if (modal.style.display === 'flex') {

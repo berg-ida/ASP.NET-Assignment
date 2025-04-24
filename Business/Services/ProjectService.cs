@@ -15,6 +15,7 @@ public interface IProjectService
     Task<ProjectResult<Project>> GetProjectAsync(string id);
     Task<ProjectResult<IEnumerable<Project>>> GetProjectsAsync();
     Task<ProjectResult> UpdateProjectAsync(EditProjectFormData formData);
+    Task<ProjectResult> DeleteProjectAsync(string projectId);
 }
 
 public class ProjectService(IProjectRepository projectRepository, IClientRepository clientRepository, IStatusRepository statusRepository, IClientService clientService) : IProjectService
@@ -114,5 +115,22 @@ public class ProjectService(IProjectRepository projectRepository, IClientReposit
 
         var updateResult = await _projectRepository.UpdateAsync(project);
         return new ProjectResult { Succeeded = updateResult.Succeeded, Error = updateResult.Error };
+    }
+
+    public async Task<ProjectResult> DeleteProjectAsync(string projectId)
+    {
+        if (string.IsNullOrEmpty(projectId))
+        {
+            return new ProjectResult { Succeeded = false, Error = "Project Id is empty." };
+        }
+
+        var project = await _projectRepository.GetAsync(x => x.Id == projectId);
+        if (project == null)
+        {
+            return new ProjectResult { Succeeded = false, Error = "No project found." };
+        }
+
+        var result = await _projectRepository.DeleteAsync(project);
+        return new ProjectResult { Succeeded = result.Succeeded, Error = result.Error };
     }
 }

@@ -80,26 +80,4 @@ public class ProjectRepository(DataContext context) : BaseRepository<ProjectEnti
         return await query.FirstOrDefaultAsync(predicate);
     }
 
-
-
-    ////ai
-    //public async Task<ProjectEntity?> GetAsync(
-    //Expression<Func<ProjectEntity, bool>> predicate,
-    //Func<IQueryable<ProjectEntity>, IIncludableQueryable<ProjectEntity, object>>? include = null)
-    //{
-    //    try
-    //    {
-    //        IQueryable<ProjectEntity> query = _context.Projects;
-
-    //        if (include != null)
-    //            query = include(query);
-
-    //        return await query.FirstOrDefaultAsync(predicate);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // Log error here
-    //        return null;
-    //    }
-    //}
 }

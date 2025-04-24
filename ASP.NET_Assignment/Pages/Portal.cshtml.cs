@@ -122,4 +122,20 @@ public class PortalModel(IProjectService projectService, _SignOutModel signOutMo
         return RedirectToPage("/Portal");
     }
 
+
+    public async Task<IActionResult> OnPostDeleteProject(string projectId)
+    {
+        if (string.IsNullOrEmpty(projectId))
+        {
+            return BadRequest();
+        }
+
+        var result = await _projectService.DeleteProjectAsync(projectId);
+        if (!result.Succeeded)
+        {
+            return BadRequest();
+        }
+
+        return RedirectToPage("/Portal");
+    }
 }

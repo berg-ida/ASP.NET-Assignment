@@ -10,9 +10,12 @@
             <i class="fa-solid fa-pen"></i> 
             <p>Edit</p>
         </button>
-        <button class="delete-button">
-            <i class="fa-solid fa-trash-can"></i>
-            <p>Delete Project</p>
-        </button>
+        <form method="post" asp-page-handler="DeleteProject">
+            <input type="hidden" id="projectIdInput" name="projectId" value="@Model.ProjectId"/>
+            <button type="submit" class="delete-button">
+                <i class="fa-solid fa-trash-can"></i>
+                <p>Delete Project</p>
+            </button>
+        </form>
     </div>
 </div>

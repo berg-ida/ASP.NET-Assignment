@@ -247,6 +247,7 @@ p {
 }
 
 .project-header {
+    position: relative;
     display: grid;
     grid-template-columns: auto 2fr auto;
     grid-template-rows: auto auto;
@@ -314,17 +315,17 @@ p {
 /*-----ADD PROJECT MODAL-----*/
 
 .addProjectModal {
-display: none;
-background-color: var(--color-modal-background);
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-justify-content: center;
-align-items: center;
-
-label {
+    display: none;
+    background-color: var(--color-modal-background);
+    z-index: 1001;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    label {
           font-size: 15px;
           font-weight: 600;
       }
@@ -528,9 +529,8 @@ input[type="text"] {
 
 .editAndDeleteModal {
     display: none;
-    position: fixed;
-    top: 21rem;
-    left: 35rem;
+    position: absolute;
+    z-index: 1000;
     
 }
 
@@ -584,7 +584,7 @@ input[type="text"] {
 /*-----EDIT PROJECT MODAL-----*/
 
 .editProjectModal {
-    z-index: 1000;
+    z-index: 1001;
     display: none;
     background-color: var(--color-modal-background);
     position: fixed;
