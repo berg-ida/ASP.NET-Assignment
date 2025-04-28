@@ -11,7 +11,7 @@
             </button>
         </div>
         <img id="projectImage" src="images/project.svg" alt="Project Image" />
-        <form class="editProject" novalidate method="post" asp-page-handler="EditProject" id="editProjectForm" asp-page="/Portal">
+        <form class="editProject ajax-form" novalidate method="post" asp-page-handler="EditProject" id="editProjectForm" asp-page="/Portal">
             <input type="hidden" asp-for="ProjectId" id="projectIdInput" />
             <div class="form-group">
                 <div class="field-group">

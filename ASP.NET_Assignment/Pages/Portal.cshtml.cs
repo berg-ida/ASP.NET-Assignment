@@ -44,7 +44,10 @@ public class PortalModel(IProjectService projectService, _SignOutModel signOutMo
         if (result.Succeeded)
         {
             Projects = result.Result!.ToList();
-            EditAndDeleteModel.ProjectId = Projects.FirstOrDefault()!.Id;
+            if (Projects.Any())
+            {
+                EditAndDeleteModel.ProjectId = Projects.First().Id;
+            }
         }
         else
         {
