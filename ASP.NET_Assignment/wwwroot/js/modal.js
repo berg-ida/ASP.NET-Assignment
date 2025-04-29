@@ -1,5 +1,50 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
 
+    //koden nedan är delvis skapad med ai för att fixa validerings problem på edit form
+    function setupModalValidation(modal) {
+        const form = modal.querySelector('form.editProject');
+        if (!form) return;
+
+        const fields = form.querySelectorAll('[data-val="true"]');
+
+        fields.forEach(field => {
+            clearErrorMessages(field)
+
+            field.addEventListener('input', () => {
+                if (field.dataset.interacted !== 'true') {
+                    field.dataset.interacted = 'true';
+                }
+                validateField(field);
+            });
+
+            field.addEventListener('blur', () => {
+                if (field.dataset.interacted !== 'true') {
+                    field.dataset.interacted = 'true';
+                }
+                validateField(field);
+            });
+        });
+    }
+
+    function validateField(field) {
+        if (!field) return;
+
+        const errorSpan = field.closest('form')?.querySelector(`[data-valmsg-for="${field.name}"]`);
+        if (!errorSpan) return;
+
+        const value = field.value.trim();
+        let errorMessage = "";
+
+        if (field.hasAttribute("data-val-required") && value === "") {
+            errorMessage = field.getAttribute("data-val-required");
+        }
+
+        field.classList.toggle("input-validation-error", !!errorMessage);
+        errorSpan.classList.toggle("field-validation-error", !!errorMessage);
+        errorSpan.textContent = errorMessage;
+    }
+    //
+
     const modalButtons = document.querySelectorAll('[data-modal="true"]')
     modalButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -8,17 +53,47 @@
 
             if (modal) {
 
+                const parentToClose = button.getAttribute('data-close-parent');
+                if (parentToClose) {
+                    const parentModal = document.querySelector(parentToClose);
+                    if (parentModal) {
+                        parentModal.style.display = 'none';
+                    }
+                }
+
                 //koden nedan är skapad med ai för att dropdown ska följa givet projekt
                 if (modalTarget === '#editAndDeleteModal') {
-
                     const buttonRect = button.getBoundingClientRect();
                     modal.style.top = `${buttonRect.bottom + window.scrollY}px`;
                     modal.style.left = `${buttonRect.left + window.scrollX - 140}px`;
 
                     const projectId = button.getAttribute('data-project-id');
                     if (projectId) {
-                        document.getElementById('projectIdInput').value = projectId;
+                        const projectIdInput = modal.querySelector('#projectIdInput');
+                        if (projectIdInput) {
+                            projectIdInput.value = projectId;
+                        } 
                     }
+                }
+                //
+
+                //koden nedan är skapad med ai för att fixa validerings problem på edit form
+                if (modalTarget === '#editProjectModal') {
+                    modal.style.display = 'flex';
+
+                    setTimeout(() => {
+                        setupModalValidation(modal);
+
+                        const form = modal.querySelector('form');
+                        if (form) {
+                            form.querySelectorAll('[data-val="true"]').forEach(field => {
+                                if (field.value.trim()) {
+                                    field.dataset.interacted = 'true';
+                                    validateField(field);
+                                }
+                            });
+                        }
+                    }, 50);
                 }
                 //
 
@@ -124,8 +199,6 @@
         })
     })
 
-
-
     function clearErrorMessages(form) {
 
         form.querySelectorAll('[data-val="true"]').forEach(input => {
@@ -135,7 +208,7 @@
         form.querySelectorAll('[data-valmsg-for]').forEach(span => {
             span.innerText = ''
             span.classList.remove('field-validation-error');
-        });
+           });
     }
 
     function addErrorMessages(key, errorMessage) {

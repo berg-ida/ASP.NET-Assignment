@@ -30,14 +30,5 @@
             document.getElementById('projectIdInput').value = projectId;
         });
     });
-
-    document.addEventListener('click', function (e) {
-        if (e.target.closest('.edit-project-trigger')) {
-            const button = e.target.closest('.edit-project-trigger');
-            const projectId = button.dataset.projectId;
-            setCurrentProjectId(projectId)
-        }
-    })
-
 })
 

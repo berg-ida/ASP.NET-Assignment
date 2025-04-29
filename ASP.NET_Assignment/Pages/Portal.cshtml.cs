@@ -128,6 +128,7 @@ public class PortalModel(IProjectService projectService, _SignOutModel signOutMo
 
     public async Task<IActionResult> OnPostDeleteProject(string projectId)
     {
+        Console.WriteLine($"Received projectId: {projectId}"); // Debug
         if (string.IsNullOrEmpty(projectId))
         {
             return BadRequest();

@@ -6,13 +6,13 @@
 
 <div id="editAndDeleteModal" class="editAndDeleteModal">
     <div class="modal-content">
-        <button type="button" class="edit-project-trigger" data-modal="true" data-target="#editProjectModal">
+        <button type="button" class="edit-project-trigger" data-modal="true" data-target="#editProjectModal" data-close-parent="#editAndDeleteModal">
             <i class="fa-solid fa-pen"></i> 
             <p>Edit</p>
         </button>
         <form method="post" asp-page-handler="DeleteProject">
-            <input type="hidden" id="projectIdInput" name="projectId" value="@Model.ProjectId"/>
-            <button type="submit" class="delete-button">
+            <input type="hidden" id="projectIdInput" name="projectId" value=""/>
+            <button type="submit" class="delete-button" data-project-id="@Model.ProjectId">
                 <i class="fa-solid fa-trash-can"></i>
                 <p>Delete Project</p>
             </button>
